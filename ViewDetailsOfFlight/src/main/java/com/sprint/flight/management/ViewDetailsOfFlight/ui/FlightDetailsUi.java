@@ -9,6 +9,7 @@ import java.util.Scanner;
 import com.sprint.flight.management.ViewDetailsOfFlight.service.ViewFlightService;
 import com.sprint.flight.management.ViewDetailsOfFlight.service.ViewFlightServiceImpl;
 import com.sprint.flight.management.ViewDetailsOfFlight.util.InvalidFlightIdEntryException;
+//import com.sprint1.fms1.model.ScheduleDetails;
 
 public class FlightDetailsUi {
      
@@ -19,24 +20,21 @@ public class FlightDetailsUi {
 			int choice;
 			System.out.println("Enter your choice : ");
 			System.out.println("1 - Get Flight Info");
-//			System.out.println("2 - AccountSummary Info");
-//			System.out.println("3 - Add Amount and show PassbookInfo");
+			System.out.println("3 - All flight details are :");
 			System.out.println("2 - Exit");
 			choice=in.nextInt();
 			switch (choice) {
 			case 1:
-				getFlightInfo();
-//				System.out.println("enter flight Id :");
-//				long id=in.nextLong();
-//				try {
-//					
-//					service.getFlightById(id);
-//				} catch (InvalidFlightIdEntryException e) {
-//					
-//					System.out.println("Error :"+e.getMessage());
-//				}
-//				break;
+				getFlightById();
+            	break;
 			case 2:
+				System.out.println("List of All Flights :");
+	    		for(FlightSchedule sd:service.getAllFlights()) {
+	    			System.out.println(sd);
+	    			}
+	    		
+	    		break;
+	    	case 3:		
 				System.out.println("exit Successful");
 				System.exit(0);
 
@@ -47,18 +45,18 @@ public class FlightDetailsUi {
 	}
 
 	}
-	private static void getFlightInfo() {
+	private static void getFlightById() {
 		
 		System.out.println("enter flight id  :");
 		long id=in.nextLong();
 		try {
-		 FlightDetails details= service.getFlightById(id);
-			if(details==null) {
-				System.out.println("Flight id :"+details.getFlightid());
-				System.out.println("Flight name is :"+details.getFlightName());
-				details=service.getFlightById(id);
-				details.getSchedule();
-			}
+		 FlightDetails flight= service.getFlightById(id);
+		 System.out.println("Flight id :"+flight.getFlightid());
+		 System.out.println("Flight name is :"+flight.getFlightName());
+			if(flight!=null) {
+				flight=service.getFlightById(id);
+				System.out.println(flight);
+							}
 		}
 		catch(Exception e) {
 			System.out.println("Error : "+e.getMessage());

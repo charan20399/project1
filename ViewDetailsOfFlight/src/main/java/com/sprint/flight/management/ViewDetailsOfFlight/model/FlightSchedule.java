@@ -19,8 +19,8 @@ public class FlightSchedule {
 	}
 	@Override
 	public String toString() {
-		return "FlightSchedule [source=" + source + ", destination=" + destination + ", seats=" + seats + ", arrival="
-				+ arrival + ", departure=" + departure + "]";
+		return "\nsource=" + source + "\ndestination=" + destination + "\nseats=" + seats + "\narrival="
+				+ arrival + "\ndeparture=" + departure + "";
 	}
 	@Override
 	public int hashCode() {

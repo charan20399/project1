@@ -7,7 +7,7 @@ public class FlightDetails {
     
 	long flightid;
 	String flightName;
-	List<FlightSchedule> schedule=new ArrayList<FlightSchedule>();
+	List<FlightSchedule> schedule;
 	public long getFlightid() {
 		return flightid;
 	}
@@ -60,7 +60,7 @@ public class FlightDetails {
 	}
 	@Override
 	public String toString() {
-		return "FlightDetails [flightid=" + flightid + ", flightName=" + flightName + ", schedule=" + schedule + "]";
+		return "FlightDetails  schedule=" + schedule + "";
 	}
 	public FlightDetails(long flightid, String flightName, List<FlightSchedule> schedule) {
 		super();
